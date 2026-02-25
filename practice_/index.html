@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Solar Certification Program</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #f7f9fa;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    header {
+      background: linear-gradient(90deg, #0f9d58 60%, #f7b733 100%);
+      color: #fff;
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(15,157,88,.06);
+      padding: 2rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #0f9d58;
+      color: #fff;
+      padding: 0.7rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      transition: background .2s;
+    }
+    .cta-btn:hover {
+      background: #f7b733;
+      color: #222;
+    }
+    .features {
+      margin: 2rem 0;
+      padding-left: 18px;
+    }
+    .features li {
+      margin-bottom: 0.6rem;
+    }
+    .form-section {
+      border-top: 1px solid #eee;
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: .3rem;
+      font-weight: bold;
+    }
+    .form-input, select {
+      width: 100%;
+      font-size: 1rem;
+      padding: .6rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    .form-submit {
+      background: #0f9d58;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background .2s;
+    }
+    .form-submit:hover {
+      background: #f7b733;
+      color: #222;
+    }
+    .testimonials {
+      margin: 2rem 0 1.5rem 0;
+      background: #f6fbe7;
+      padding: 1rem 1rem 1rem 1.5rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Get Certified in Solar Energy</h1>
+    <p>Advance your career with industry-recognized solar certification</p>
+    <a href="#signup" class="cta-btn">Apply Now</a>
+  </header>
+  <div class="container">
+    <h2>Why Choose Our Solar Certification Program?</h2>
+    <ul class="features">
+      <li>Global recognition in renewable energy</li>
+      <li>Flexible online and in-person modules</li>
+      <li>Expert instructors with real-world experience</li>
+      <li>Free resources & material included</li>
+      <li>Support for job placement after graduation</li>
+    </ul>
+
+    <div class="testimonials">
+      “This program gave me the confidence to start my career in solar. The certification is respected everywhere.”<br><span style="font-weight:bold;">– Priya K., Solar Technician</span>
+    </div>
+    
+    <h2 id="signup">Sign Up for Certification</h2>
+    <div class="form-section">
+      <form>
+        <label class="form-label" for="name">Name</label>
+        <input class="form-input" type="text" id="name" name="name" required>
+        <label class="form-label" for="email">Email</label>
+        <input class="form-input" type="email" id="email" name="email" required>
+        <label class="form-label" for="mode">Preferred Study Mode</label>
+        <select id="mode" name="mode">
+          <option value="online">Online</option>
+          <option value="inperson">In Person</option>
+        </select>
+        <label class="form-label" for="message">Message or Questions</label>
+        <input class="form-input" type="text" id="message" name="message">
+        <button class="form-submit" type="submit">Register Now</button>
+      </form>
+    </div>
+    <p>Questions? <a href="mailto:info@solarcert.org" style="color:#0f9d58;text-decoration:underline;">Contact Us</a></p>
+  </div>
+</body>
+</html>

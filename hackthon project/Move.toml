@@ -1,0 +1,16 @@
+[package]
+name = "OrgTrafficking"
+version = "1.0.0"
+authors = []
+
+[addresses]
+MyModule = "0xe639c19c45585166b90d4146340f07fe70d084edbc69081b39e6fa6184489139"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]

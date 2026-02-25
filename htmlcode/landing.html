@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organ Trafficking Prevention dApp</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0; padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color: #005f99;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 28px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    main {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #005f99;
+      font-weight: 700;
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+    p.description {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+      color: #444;
+      line-height: 1.5;
+    }
+    .btn {
+      background-color: #007acc;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 122, 204, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background-color: #005f99;
+      box-shadow: 0 6px 12px rgba(0, 96, 153, 0.6);
+    }
+    #walletStatus {
+      margin-top: 20px;
+      font-weight: 600;
+      color: green;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    section.register {
+      margin-top: 60px;
+      background: white;
+      padding: 32px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+    h2 {
+      margin-top: 0;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #005f99;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto 40px auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+    input[type="number"], input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+    }
+    input[type="number"]:focus, input[type="text"]:focus {
+      border-color: #007acc;
+      outline: none;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background: #e3e7eb;
+      color: #777;
+      font-size: 14px;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      main {
+        margin: 20px 10px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>Organ Trafficking Prevention dApp</header>
+
+<main>
+  <h1>Fight Illegal Organ Trafficking with Blockchain</h1>
+  <p class="description">
+    Secure and transparent organ donor and recipient registration powered by Aptos blockchain and Move smart contracts. Join the movement for ethical organ donation.
+  </p>
+
+  <a href="#register" class="btn">Get Started</a>
+
+  <div id="walletStatus"></div>
+
+  <section id="register" class="register">
+    <h2>Register as Donor</h2>
+    <form id="donorForm">
+      <label for="donorBlood">Blood Type (number):</label>
+      <input type="number" id="donorBlood" required min="1" max="8" />
+      <label for="donorOrgans">Organs (comma separated):</label>
+      <input type="text" id="donorOrgans" required />
+      <button type="submit" class="btn">Register Donor</button>
+    </form>
+
+    <h2>Register as Recipient</h2>
+    <form id="recipientForm">
+      <label for="recipientBlood">Blood Type (number):</label>
+      <input type="number" id="recipientBlood" required min="1" max="8" />
+      <label for="recipientOrgan">Required Organ:</label>
+      <input type="text" id="recipientOrgan" required />
+      <button type="submit" class="btn">Register Recipient

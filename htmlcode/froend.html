@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organ Trafficking Prevention dApp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f9fc;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 15px;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #0077cc;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #0077cc;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    #wallet-address {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Organ Trafficking Prevention dApp</h1>
+  </header>
+
+  <button id="connectWallet">Connect Wallet</button>
+  <div id="wallet-address"></div>
+
+  <form id="donorForm" style="display:none;">
+    <h2>Register as Donor</h2>
+    <label>Blood Type (number):</label>
+    <input type="number" id="donorBloodType" required />
+    <label>Organs (comma separated):</label>
+    <input type="text" id="donorOrgans" required />
+    <button type="submit">Register Donor</button>
+  </form>
+
+  <form id="recipientForm" style="display:none; margin-top:40px;">
+    <h2>Register as Recipient</h2>
+    <label>Blood Type (number):</label>
+    <input type="number" id="recipientBloodType" required />
+    <label>Required Organ:</label>
+    <input type="text" id="requiredOrgan" required />
+    <button type="submit">Register Recipient</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/aptos/dist/index.umd.min.js"></script>
+  <script>
+    const connectWalletButton = document.getElementById("connectWallet");
+    const walletAddressDiv = document.getElementById("wallet-address");
+    const donorForm = document.getElementById("donorForm");
+    const recipientForm = document.getElementById("recipientForm");
+
+    let accountAddress = null;
+
+    async function connectWallet() {
+      if (!window.aptos) {
+        alert("Please install an Aptos wallet extension like Petra Wallet.");
+        return;
+      }
+      try {
+        const res = await window.aptos.connect();
+        accountAddress = res.address;
+        walletAddressDiv.textContent = "Connected wallet: " + accountAddress;
+        connectWalletButton.style.display = "none";
+        donorForm.style.display = "block";
+        recipientForm.style.display = "block";
+      } catch (err) {
+        alert("Could not connect wallet: " + err.message);
+      }
+    }
+
+    async function submitTransaction(functionName, args) {
+      try {
+        const payload = {
+          type: "entry_function_payload",
+          function: `0xYOUR_CONTRACT_ADDRESS::OrganRegistry::${functionName}`,
+          type_arguments: [],
+          arguments: args,
+        };
+        const tx = await window.aptos.signAndSubmitTransaction(payload);
+        await window.aptos.waitForTransaction(tx.hash);
+        alert(`${functionName} transaction succeeded!`);
+      } catch (e) {
+        alert(`Error in ${functionName}: ` + e.message);
+      }
+    }
+
+    connectWalletButton.addEventListener("click", connectWallet);
+
+    donorForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const bloodType = Number(document.getElementById("donorBloodType").value);
+      const organsRaw = document.getElementById("donorOrgans").value;
+      const organs = organsRaw.split(",").map(org => org.trim());
+      await submitTransaction("register_donor", [bloodType, organs]);
+      donorForm.reset();
+    });
+
+    recipientForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const bloodType = Number(document.getElementById("recipientBloodType").value);
+      const organ = document.getElementById("requiredOrgan").value.trim();
+      await submitTransaction("register_recipient", [bloodType, organ]);
+      recipientForm.reset();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+/* General Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Background and Layout */
+
+body,
+html,
+#root {
+    height: 100%;
+    background: linear-gradient(135deg, #3ba55d, #47afc4);
+    color: white;
+}
+
+
+/* Landing Page Container */
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+
+/* Navbar */
+
+.navbar .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+
+/* Content */
+
+.content {
+    max-width: 700px;
+}
+
+.tagline {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+.tagline span {
+    color: #a8ffb5;
+}
+
+.description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+}
+
+
+/* Button */
+
+.cta-btn {
+    background: #a8ffb5;
+    color: #0a3d62;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #fff;
+    transform: translateY(-3px);
+}
+
+
+/* Footer */
+
+.footer {
+    font-size: 0.9rem;
+    color: #c8e6c9;
+}
